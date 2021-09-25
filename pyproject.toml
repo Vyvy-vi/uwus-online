@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "uwus-online"
+version = "0.0.0"
+description = "A random message board that uwu-fies anything you post"
+authors = ["Vyvy-vi <vyom.j@protonmail.com>"]
+license = "AGPL-3.0-or-later"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+starlette = "^0.16.0"
+uvicorn = "^0.15.0"
+python-dotenv = "^0.19.0"
+Jinja2 = "^3.0.1"
+taskipy = "^1.8.2"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.2"
+black = "^21.9b0"
+isort = "^5.9.3"
+pytest = "^6.2.5"
+pre-commit = "^2.15.0"
+requests="^2.26.0"
+pytest-cov = "^2.12.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+precommit = "pre-commit install --hook-type pre-commit --hook-type pre-push"
+
+lint = "flake8 ."
+post_lint = "task format"
+format = "task isort && task black"
+
+isort = "isort ."
+black = "black ."
+test = "pytest --cov=src tests/ -v"
+start = "uvicorn src.main:app"
+
