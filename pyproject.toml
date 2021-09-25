@@ -4,6 +4,7 @@ version = "0.0.0"
 description = "A random message board that uwu-fies anything you post"
 authors = ["Vyvy-vi <vyom.j@protonmail.com>"]
 license = "AGPL-3.0-or-later"
+repository = "https://github.com/Vyvy-vi/uwus-online"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -37,4 +38,3 @@ isort = "isort ."
 black = "black ."
 test = "pytest --cov=src tests/ -v"
 start = "uvicorn src.main:app"
-
